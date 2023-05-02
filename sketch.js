@@ -1,12 +1,14 @@
+//Referenced codes for draw tree: https://editor.p5js.org/joemcalister/sketches/6v-N3urTT
+
 function setup(){
   createCanvas(windowWidth, windowHeight);
   background(255);
-  
 }
 
 function draw(){
   background(255);
 
+  // --------Three types of trees------
   push();
   for(let i=0; i<30 ;i++){
     stroke(150,130);
@@ -30,20 +32,9 @@ function draw(){
   drawTree3();
   }
   pop();
+  drawFog();
 
- 
-  // push();
-  // for(let i=0; i<20 ;i++){
-  //   stroke(150,20);
-  //   fill(0,20);
-  //   drawTree2();
-  // }
-  // pop();
-
-  //if(frameCount % 6 == 0)
-  drawFog(); // only draw the fog evey 16 frames
-
-  // 参考线
+  // -------Reference line, to leave a certain blank part of the background---------
   push();
 		noFill();
 		stroke(0, 0, 0, 100);
@@ -53,7 +44,7 @@ function draw(){
 	pop();
 }
 
-// fog is a slightly opaque rectangle over the entire window
+// --------fog is a slightly opaque rectangle over the entire window---------
 function drawFog(){
   push();
   fill(32, 16);
@@ -62,8 +53,9 @@ function drawFog(){
   pop();
 }
 
-// a 'wrapper' function that makes a single, random tree
-// just to keep things tidy
+// -----------Recursive part of the loop----------------
+// ---------- 3 different branches -----------
+
 function drawTree(){
     let bLen = random(100,height/3);
     let bAng = -PI*0.5;
@@ -98,7 +90,7 @@ function drawTree3(){
 }
 
 
-// same recusive function as in Tree.pde, only using random numbers
+// ------random numbers-------
 function branch(len, theta){
   push();
   rotate(theta); // rotate to the angle provided
@@ -116,6 +108,7 @@ function branch(len, theta){
   pop();
 }
 
-function windowResized() {  //改变窗口的大小
+// ---------Change the size of the window --------
+function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
